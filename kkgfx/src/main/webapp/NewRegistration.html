@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>KKGraphics Registration</title>
+<style type="text/css">
+body {
+    font-size: 16px;
+    background: #f9f9f9;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background-image: url(https://free4kwallpapers.com/uploads/originals/2015/07/14/graphic-designer.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+h2 {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #0366bd;
+    font: size 25px;
+}
+form {
+    
+    width: 300px;
+    background: #fff;
+    padding: 15px 40px 40px;
+    border: 1px solid #ccc;
+    margin-left: 60%;
+    margin-top: 5%;
+    border-radius: 5px;
+}
+label {
+    display: block;
+    margin-bottom: 5px
+}
+label i {
+    color: #999;
+    font-size: 80%;
+}
+input, select {
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+.row {
+    padding-bottom: 10px;
+}
+.form-inline {
+    border: 1px solid #ccc;
+    padding: 8px 10px 4px;
+    border-radius: 2px;
+}
+.form-inline label, .form-inline input {
+    display: inline-block;
+    width: auto;
+    padding-right: 15px;
+}
+.error {
+    color: rgb(255, 0, 0);
+    font-size: 90%;
+}
+input[type="submit"] {
+    height: 40px;
+    width: 45%;
+    font-size: 125%;
+    font-weight: 100;
+    background: #006dcc;
+    border-color: #016BC1;
+    color: #fff;
+    margin-top: 10px;
+    cursor:alias;
+    border-radius: 50px;
+    margin-left: 25%;
+    margin-top: 10%;
+}
+input[type="submit"]:hover {
+    background-color:#1086ee;
+    
+}
+</style>
+<script>
+    
+// Defining a function to display error message
+function printError(elemId, hintMsg) {
+    document.getElementById(elemId).innerHTML = hintMsg;
+}
+
+function myFunction() {
+    alert("You Are Successfully Registered With KK Graphics!");
+  }
+
+// Defining a function to validate form 
+function validateForm() {
+
+    // Retrieving the values of form elements 
+    var name = document.KKgraphicsForm.name.value;
+    var email = document.KKgraphicsForm.email.value;
+    var mobile = document.KKgraphicsForm.mobile.value;
+    var country = document.KKgraphicsForm.country.value;
+    var gender = document.KKgraphicsForm.gender.value;
+    var password = document.KKgraphicsForm.password.value;
+    var cpassword = document.KKgraphicsForm.cpassword.value;
+    
+    
+	// Defining error variables with a default value
+    var nameErr = emailErr = mobileErr = countryErr = genderErr = passworderr = cpassworderr = true;
+    
+    // Validate name
+    if(name == "") {
+        printError("nameErr", "Please enter your name");
+    } else {
+        var regex = /^[a-zA-Z\s]+$/;                
+        if(regex.test(name) === false) {
+            printError("nameErr", "Please enter a valid name");
+        } else {
+            printError("nameErr", "");
+            nameErr = false;
+        }
+    }
+    
+    // Validate email address
+    if(email == "") {
+        printError("emailErr", "Please enter your email address");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(email) === false) {
+            printError("emailErr", "Please enter a valid email address");
+        } else{
+            printError("emailErr", "");
+            emailErr = false;
+        }
+    }
+    
+    // Validate mobile number
+    if(mobile == "") {
+        printError("mobileErr", "Please enter your mobile number");
+    } else {
+        var regex = /^[1-9]\d{9}$/;
+        if(regex.test(mobile) === false) {
+            printError("mobileErr", "Please enter a valid 10 digit mobile number");
+        } else{
+            printError("mobileErr", "");
+            mobileErr = false;
+        }
+    }
+    
+    // Validate country
+    if(country == "Select") {
+        printError("countryErr", "Please select your country");
+    } else {
+        printError("countryErr", "");
+        countryErr = false;
+    }
+    
+    // Validate gender
+    if(gender == "") {
+        printError("genderErr", "Please select your gender");
+    } else {
+        printError("genderErr", "");
+        genderErr = false;
+    }
+    
+ // Validate password
+    if(password == "") {
+        printError("passwordErr", "Please enter your password");
+    } else {
+        var regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+        if(regex.test(mobile) === false) {
+            printError("passwordErr", "Please enter a valid password");
+        } else{
+            printError("passwordErr", "");
+            mobileErr = false;
+        }
+    }
+ 
+ // Validate confirm password
+       if(password == "") {
+        printError("cpasswordErr", "Please enter your password");
+    } else {
+        var regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+        if(regex.test(mobile) === false) {
+            printError("cpasswordErr", "Please enter a valid password");
+        } else{
+            printError("cpasswordErr", "");
+            mobileErr = false;
+        }
+    }
+ 
+ 
+    // Prevent the form from being submitted if there are any errors
+    if((nameErr || emailErr || mobileErr || countryErr || genderErr || password || cpassword) == true) {
+       return false;
+    } else {
+        // Creating a string from input data for preview
+        var dataPreview = "You've entered the following details: \n" +
+                          "Full Name: " + name + "\n" +
+                          "Email Address: " + email + "\n" +
+                          "Mobile Number: " + mobile + "\n" +
+                          "Country: " + country + "\n" +
+                          "Gender: " + gender + "\n";
+       					  "Password: " + password + "\n";
+        				  "Confirm Password: " + cpassword + "\n";
+        // Display input data in a dialog box before submitting the form
+        alert(dataPreview);
+        myFunction();
+    }
+};
+</script>
+</head>
+<body>
+<form name="KKgraphicsForm" onsubmit="validateForm()" action="Homepage.html" method="post" required>
+    <h2>Registration</h2>
+    <div class="row">
+        <label>Full Name</label>
+        <input type="text" name="name">
+        <div class="error" id="nameErr"></div>
+    </div>
+    <div class="row">
+        <label>Email Address</label>
+        <input type="text" name="email">
+        <div class="error" id="emailErr"></div>
+    </div>
+    <div class="row">
+        <label>Mobile Number</label>
+        <input type="text" name="mobile" maxlength="10">
+        <div class="error" id="mobileErr"></div>
+    </div>
+    <div class="row">
+        <label>Country</label>
+        <select name="country">
+            <option>Select</option>
+            <option>Australia</option>
+            <option>India</option>
+            <option>United States</option>
+            <option>United Kingdom</option>
+        </select>
+        <div class="error" id="countryErr"></div>
+    </div>
+    <div class="row">
+        <label>Gender</label>
+        <div class="form-inline">
+            <label><input type="radio" name="gender" value="male"> Male</label>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+        </div>
+        <div class="error" id="genderErr"></div>
+    </div>
+    <div class="row">
+        <label>Password</label>
+        <input type="text" name="password" maxlength="10">
+        <div class="error" id="passwordErr"></div>
+    </div>
+    
+    <div class="row">
+        <label>Confirm Password</label>
+        <input type="text" name="cpassword" maxlength="10">
+        <div class="error" id="cpasswordErr"></div>
+    </div>
+    
+    <div class="row">
+        <input type="submit" value="Submit" onclick="validateForm()">
+    </div>
+</form>
+</body>
+</html>
